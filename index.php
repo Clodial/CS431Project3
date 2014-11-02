@@ -48,6 +48,7 @@
 	<!--Basic Login Features-->
 	<!--Also, mind the login Regex, it's gonna be a difficult one-->
 	<div id="fr-page-login">
+		<h3>Type in your Login Credentials:</h3>
 		<form method="post" action="Proj3LogCheck.php">
 			<label class="fr-page-text">Username *</label>
 				<input class="fr-page-input" id="fr-page-user" required type=text name="user" placeholder="Type Your Username." autocomplete="off"></br>

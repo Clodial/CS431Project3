@@ -11,7 +11,9 @@
 ?>
 </head>
 <body>
-
+	<div id="header">
+		<h1><?php echo $_SESSION["fullName"];?>'s Dashboard</h1>
+	</div>
 	<div id="exec-message" class="width-full">
 		<h4 id="exec-msg-head">Recent Additions</h4>
 		<?php
@@ -31,11 +33,12 @@ while($r = mysql_fetch_array($que)){
 			<?php
 $reg = "select * from EdClasses";
 $que = mysql_query($reg) or die(mysql_error());
+$count = 0;
 while($r = mysql_fetch_array($que)){
 	$class = $r['ClassDir'];
 	$teach = $r['userTeacher'];
-
-	if($r["classID"] % 2 == 0){
+	$count = $count + 1;
+	if($count % 2 == 0){
 		echo "<div class=\"exec-cl section-blue\">";
 		echo "<p> Class: " . $class . "</p>";
 		echo "<p> Taught by: " . $teach . "</p>";
@@ -54,10 +57,12 @@ while($r = mysql_fetch_array($que)){
 			<?php
 $reg = "select * from EdAccounts where type='Staff' or type='Teacher'";
 $que = mysql_query($reg) or die(mysql_error());
+$count = 0;
 while($r = mysql_fetch_array($que)){
 	$name = $r["fName"] . " " . " " . $r["lName"];
 	$role = $r["type"];
-	if($r["ActID"] % 2 == 0){
+	$count = $count + 1;
+	if($count % 2 == 0){
 		echo "<div class=\"exec-st section-blue\">";
 		echo "<p> Name: " . $name . " | Role: " . $role . "</p>";
 		echo "</div>";
@@ -71,7 +76,7 @@ while($r = mysql_fetch_array($que)){
 		</div>
 	</div>
 	<div id="exec-add" class="width-full">
-		<form method="post" action="P3ExecAdd.php">
+		<form id="exec-form" method="post" action="P3ExecAdd.php">
 			<label class="exec-add-part">New Employee Username *</label>
 				<input class="exec-page-input" required type=text name="user" pattern="^[a-z]{3}[0-9]{2,5}$" placeholder="New Username" autocomplete="off"></br>
 			<label class="exec-add-part">New Employee Password *</label>
@@ -87,6 +92,9 @@ while($r = mysql_fetch_array($que)){
 				</select>
 			<input class="exec-add-part" type="submit" value="Add Employee">
 		</form>
+	</div>
+	<div id="footer">
+		<a href="index.php">Logout</a>
 	</div>
 </body>
 </html>
