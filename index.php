@@ -9,16 +9,20 @@
 			unset($_SESSION['password']);
 		}
 		$_SESSION['username'] = null;
-		if(isset($_SESSION))
+		if(isset($_SESSION['username'])){
+			unset($_SESSION['username']);
+		}
+		$_SESSION['acttype'] = null;
+		if(isset($_SESSION['acttype'])){
+			unset($_SESSION['acttype']);
+		}
+		$_SESSION['fullName'] = null;
+		if(isset($_SESSION['fullName'])){
+			unset($_SESSION['fullName']);
+		}
 		//make sure to hide personal info
 		include("../account.php");
 
-		//make the connection
-		$mysqli = new mysqli($hostname, $username, $password, $project);
-		if(mysqli_connect_errno()){
-			echo mysqli_connect_errno();
-			exit();
-		}
 	?>
 	<script type="text/javascript">
 		function checkPass(){
@@ -43,7 +47,7 @@
 	<!--Basic Login Features-->
 	<!--Also, mind the login Regex, it's gonna be a difficult one-->
 	<div id="fr-page-login">
-		<form action="proj3_firstAuth.php">
+		<form action="Proj3LogCheck.php">
 			<label class="fr-page-text">Username *</label>
 				<input class="fr-page-input" id="user" required type=text name="user" placeholder="Type Your Username." autocomplete="off"></br>
 			<label class="fr-page-text">Password *</label>
