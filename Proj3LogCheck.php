@@ -1,10 +1,11 @@
 <html>
+<head>
 <?php
 	ob_start();
 	session_start();
 	include("../account.php");
 	$dbh = mysql_connect ( $hostname, $username, $password )
-				or    die ( "Unable to connect to MySQL database" );
+		or die ( "Unable to connect to MySQL database" );
 	mysql_select_db( $project )  or die ("Incorrect database name");
 
 	$name = "";
@@ -32,7 +33,7 @@
 		$pCheck = true;
 	}
 ?>
-
+</head>
 <body>
 <div id="p3-CheckBoard">
 <?php
@@ -51,7 +52,7 @@
 		if($type == 'Executive'){
 			echo "<a class=\"p3-checktest\" href=\"P3Exec.php\">Continue to Executive Controls</a>";
 		}else if($type == 'Staff'){
-			echo "<a class=\"p3-checktest\" href=\"P3Staff.php\">Continue to Staff Controls</a>";
+			echo "<a class=\"p3-checktest\" href=\"P3Admin.php\">Continue to Staff Controls</a>";
 		}else if($type == 'Teacher'){
 			echo "<a class=\"p3-checktest\" href=\"P3Teacher.php\">Continue to Teacher Controls</a>";
 		}else{

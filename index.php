@@ -50,7 +50,7 @@
 	<div id="fr-page-login">
 		<form method="post" action="Proj3LogCheck.php">
 			<label class="fr-page-text">Username *</label>
-				<input class="fr-page-input" id="user" required type=text name="user" placeholder="Type Your Username." autocomplete="off"></br>
+				<input class="fr-page-input" id="fr-page-user" required type=text name="user" placeholder="Type Your Username." autocomplete="off"></br>
 			<label class="fr-page-text">Password *</label>
 				<input id="fr-page-pass" class="fr-page-input" required type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$" name="pass" placeholder="Type Your Password." autocomplete="off"></br>
 			<label class="fr-page-text">Confirm Password *</label>
