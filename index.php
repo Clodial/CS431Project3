@@ -1,24 +1,25 @@
 <html>
 <head>
 	<?php
+		ob_start();
 		session_start();
 		$_SESSION['view'] = $_SESSION['view'] + 1;
 		//This is the login page so it has to be this way
-		$_SESSION['password'] = null;
-		if(isset($_SESSION['password'])){
-			unset($_SESSION['password']);
+		$_SESSION["password"] = null;
+		if(isset($_SESSION["password"])){
+			unset($_SESSION["password"]);
 		}
-		$_SESSION['username'] = null;
-		if(isset($_SESSION['username'])){
-			unset($_SESSION['username']);
+		$_SESSION["username"] = null;
+		if(isset($_SESSION["username"])){
+			unset($_SESSION["username"]);
 		}
-		$_SESSION['acttype'] = null;
-		if(isset($_SESSION['acttype'])){
-			unset($_SESSION['acttype']);
+		$_SESSION["acttype"] = null;
+		if(isset($_SESSION["acttype"])){
+			unset($_SESSION["acttype"]);
 		}
-		$_SESSION['fullName'] = null;
-		if(isset($_SESSION['fullName'])){
-			unset($_SESSION['fullName']);
+		$_SESSION["fullName"] = null;
+		if(isset($_SESSION["fullName"])){
+			unset($_SESSION["fullName"]);
 		}
 		//make sure to hide personal info
 		include("../account.php");
@@ -47,7 +48,7 @@
 	<!--Basic Login Features-->
 	<!--Also, mind the login Regex, it's gonna be a difficult one-->
 	<div id="fr-page-login">
-		<form action="Proj3LogCheck.php">
+		<form method="post" action="Proj3LogCheck.php">
 			<label class="fr-page-text">Username *</label>
 				<input class="fr-page-input" id="user" required type=text name="user" placeholder="Type Your Username." autocomplete="off"></br>
 			<label class="fr-page-text">Password *</label>
