@@ -30,7 +30,6 @@
 </head>
 <body>
 <?php
-
 	$sql2 = "insert into EdClasses(userTeacher, ClassDir) values('$teacher','$class')";
 	if(mysql_query($sql2)){
 		echo "<h1>Class Added!</h1></br>";

@@ -101,6 +101,7 @@ while($r = mysql_fetch_array($t)){
 }
 					?>
 				</select>
+			<label class="admin-add-part">Section *</label>
 			<input class="admin-add-part" type="submit" value="Add Class">
 		</form>
 	</div>
