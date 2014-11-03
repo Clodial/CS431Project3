@@ -1,4 +1,4 @@
-CS431Project3
+CS431 Project 3
 =============
 Code for CS431 - 003 Project 3
 
