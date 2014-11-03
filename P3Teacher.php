@@ -1,5 +1,6 @@
 <html>
 <head>
+<link href="../_inc/stylesheet.css" type="text/css" rel="stylesheet" />
 <?php
 	ob_start();
 	session_start();
@@ -7,6 +8,10 @@
 	$dbh = mysql_connect ( $hostname, $username, $password )
 		or die ( "Unable to connect to MySQL database" );
 	mysql_select_db( $project )  or die ("Incorrect database name");
+	if($_SESSION["acttype"] != "Teacher"){
+		header("Location: index.php"); /* Redirect browser */
+		exit();
+	}
 ?>
 </head>
 <body>
@@ -14,11 +19,11 @@
 		<h1><?php echo $_SESSION["fullName"];?>'s Dashboard</h1>
 	</div>
 	<div id="body">
-		<div id="teach-lists" class="width-third">
-			<div id="teach-assign" class="width-half">
-				<h4>Graded Assignments</h4>
+	<div class="clear"></div>
+			<div id="main-left-imp" class="width-half">
+				<h2>Graded Assignments</h2>
 				<?php 
-$teacher = $_SESSION['user'];
+$teacher = $_SESSION['username'];
 $reg = "select * from EdGrades where userTeach='$teacher'";
 $que = mysql_query($reg) or die(mysql_error());
 while($r = mysql_fetch_array($que)){
@@ -26,32 +31,27 @@ while($r = mysql_fetch_array($que)){
 	$stud = $r["userStudent"];
 	$assignment = $r["Assignment"];
 	$grade = $r["grade"];
-	$count = 0;
-	if($count % 2 == 0){
-		echo "<div class=\"teach-cl section-grey\">";
-		echo "<p> Class: " . $class . "</p>";
-		echo "<p> Student: " . $stud . "</p>";
-		echo "<p> Assignment: " . $Assignment . "</p>";
-		echo "<p> Grade: " . $grade . "</p>";
-		echo "</div>";
-	}else{
-		echo "<div class=\"teach-cl section-white\">";
-		echo "<p> Class: " . $class . "</p>";
-		echo "<p> Student: " . $stud . "</p>";
-		echo "<p> Assignment: " . $Assignment . "</p>";
-		echo "<p> Grade: " . $grade . "</p>";
-		echo "</div>";
+	$sql2 = "select * from EdAccounts where user='$stud'";
+	$que2 = mysql_query($sql2) or die(mysql_error());
+	$name = "";
+	while($t = mysql_fetch_array($que2)){
+		$name = $t["fName"] . " " . " " . $t["lName"];
 	}
+	echo "<div>";
+	echo "<p> Class: " . $class . "</p>";
+	echo "<p> Student: " . $name . "</p>";
+	echo "<p> Assignment: " . $assignment . "</p>";
+	echo "<p> Grade: " . $grade . "</p>";
+	echo "</div>";
 }
 				?>
 			</div>
-			<div id="teach-stud" class="width-half">
-				<h4>Students taking classes</h4>
+			<div id="main-right-imp" class="width-half">
+				<h2>Students taking classes</h2>
 				<?php 
-$teacher = $_SESSION['user'];
+$teacher = $_SESSION['username'];
 $reg = "select * from EdParticipate where userTa='$teacher'";
 $que = mysql_query($reg) or die(mysql_error());
-$count = 0;
 while($r = mysql_fetch_array($que)){
 	$stud = $r['userSt'];
 	$class = $r['class'];
@@ -61,21 +61,14 @@ while($r = mysql_fetch_array($que)){
 	while($t = mysql_fetch_array($que2)){
 		$name = $t["fName"] . " " . " " . $t["lName"];
 	}
-	$count = $count + 1;
-	if($count % 2 == 0){
-		echo "<div class=\"teach-st section-grey\">";
-		echo "<p> Name: " . $name . " | Class: " . $class . "</p>";
-		echo "</div>";
-	}else{
-		echo "<div class=\"teach-st section-white\">";
-		echo "<p> Name: " . $name . " | Role: " . $class . "</p>";
-		echo "</div>";
-	}
+	echo "<div>";
+	echo "<p> Name: " . $name . " | Class: " . $class . "</p>";
+	echo "</div>";
 }
 				?>
 			</div>
-		</div>
-		<div id="teach-asAdd" class="width-full">
+		<div class="clear"></div>
+		<div id="main-Add1" class="width-full form-blue">
 			<!--Add Students-->
 			<form id="teach-form-st" method="post" action="P3TeacherAddS.php">
 				<label class="teach-add-part">Student *</label>

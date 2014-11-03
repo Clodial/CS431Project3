@@ -1,5 +1,6 @@
 <html>
 <head>
+	<link href="../_inc/stylesheet.css" type="text/css" rel="stylesheet" />
 	<?php
 		ob_start();
 		session_start();
@@ -56,9 +57,13 @@
 				<input id="fr-page-pass" class="fr-page-input" required type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$" name="pass" placeholder="Type Your Password." autocomplete="off"></br>
 			<label class="fr-page-text">Confirm Password *</label>
 				<input id="fr-page-check" class="fr-page-input" required type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$" name="check" placeholder="Confirm Password." autocomplete="off" onblur="checkPass()"></br>
-			<input class="fr-page-submit" type="submit" value="Login">
+			<input id="fr-submit" class="fr-page-submit" type="submit" value="Login">
 		</form></br>
 		<span id="fr-page-span"></span>
+	</div>
+	<div id="fr-credits">
+		<h3>A CS431 Project 3: The Grading System @Fall 2014</h3>
+		<p>by Matthew Maravilla, Jan Tacbianan, Eduardo Preciado, and Mohammad Omer</p> 
 	</div>
 </body>
 </html>

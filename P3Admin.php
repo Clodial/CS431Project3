@@ -1,5 +1,6 @@
 <html>
 <head>
+<link href="../_inc/stylesheet.css" type="text/css" rel="stylesheet" />
 <?php
 	ob_start();
 	session_start();
@@ -7,14 +8,20 @@
 	$dbh = mysql_connect ( $hostname, $username, $password )
 		or die ( "Unable to connect to MySQL database" );
 	mysql_select_db( $project )  or die ("Incorrect database name");
+	if($_SESSION["acttype"] != "Staff"){
+		header("Location: index.php"); /* Redirect browser */
+		exit();
+	}
 ?>
 </head>
 <body>
 	<div id="header">
 		<h1><?php echo $_SESSION["fullName"];?>'s Dashboard</h1>
 	</div>
-	<div id="admin-msg" class="width-full">
-	<h5 id="admin-msg-list">Current Classes</h5>
+
+
+<div id="main-imp" class="width-full">
+	<h1 id="admin-msg-list">Lastest Info</h1>
 		<?php
 $reg = "select * from EdAdditions";
 $que = mysql_query($reg) or die(mysql_error());
@@ -26,8 +33,9 @@ while($r = mysql_fetch_array($que)){
 }
 		?>
 	</div>
-	<div id="admin-lists" class="width-full">
-		<div id="admin-class" class="width-half">
+	<div class="clear"></div>
+	<div id="main-left-imp" class="width-half">
+		<h1 id="admin-msg-list">Available Classes</h1>
 			<?php 
 $reg = "select * from EdClasses";
 $que = mysql_query($reg) or die(mysql_error());
@@ -35,21 +43,28 @@ while($r = mysql_fetch_array($que)){
 	$class = $r["ClassDir"];
 	$teacher = $r["userTeacher"];
 	$count = 0;
+	$sql3 = "select CONCAT(fName, ' ', lName) as name from EdAccounts where user='$teacher'";
+	$que2 = mysql_query($sql3) or die(mysql_error());
+	$name = "";
+	while($rr = mysql_fetch_array($que2)){
+		$name = $rr["name"];
+	}
 	if($count % 2 == 0){
 		echo "<div class=\"admin-cl section-grey\">";
 		echo "<p> Class: " . $class . "</p>";
-		echo "<p> Taught by: " . $teach . "</p>";
+		echo "<p> Taught by: " . $name . "</p>";
 		echo "</div>";
 	}else{
 		echo "<div class=\"admin-cl section-white\">";
 		echo "<p> Class: " . $class . "</p>";
-		echo "<p> Taught by: " . $teach . "</p>";
+		echo "<p> Taught by: " . $name . "</p>";
 		echo "</div>";
 	}
 }
 			?>
-		</div>
-		<div id="admin-stud" class="width-half">
+	</div>
+	<div id="main-right-imp" class="width-half">
+		<h1 id="admin-msg-list">Student Master List</h1>
 			<?php 
 $reg = "select * from EdAccounts where type='Student'";
 $que = mysql_query($reg) or die(mysql_error());
@@ -69,11 +84,12 @@ while($r = mysql_fetch_array($que)){
 	}
 }
 			?>
-		</div>
 	</div>
-	<div id="admin-stAdd" class="width-full">
+	<div class="clear"></div>
+	<div id="main-Add1" class="width-full form-blue">
 		<!--Add Students-->
-		<form id="admin-form-st" method="post" action="P3AdminAddS.php">
+		<h2>Add Student</h2>
+		<form id="admin-form1" method="post" action="P3AdminAddS.php">
 			<label class="admin-add-part">New Student Username *</label>
 				<input class="admin-page-input" required type=text name="user" pattern="^[a-z]{3}[0-9]{2,5}$" placeholder="New Username" autocomplete="off"></br>
 			<label class="admin-add-part">New Student Password *</label>
@@ -85,9 +101,10 @@ while($r = mysql_fetch_array($que)){
 			<input class="admin-add-part" type="submit" value="Add Student">
 		</form>
 	</div>
-	<div id="admin-clAdd" class="width-full">
+	<div id="main-Add2" class="width-full form-blue">
 		<!--Add Classes-->
-		<form id="admin-form-cl" method="post" action="P3AdminAddC.php">
+		<h2>Add Class</h2>
+		<form id="admin-form2" method="post" action="P3AdminAddC.php">
 			<label class="admin-add-part">New Class *</label>
 				<input class="admin-page-input" required type=text name="class" pattern="[A-Z]{2}[0-9]{3}$" placeholder="New Class" autocomplete="off"></br>
 			<label class="admin-add-part">Teacher *</label>
@@ -100,8 +117,7 @@ while($r = mysql_fetch_array($t)){
 	echo "<option value='" . $r["user"]."'>" . $name . "</option>";
 }
 					?>
-				</select>
-			<label class="admin-add-part">Section *</label>
+				</select></br>
 			<input class="admin-add-part" type="submit" value="Add Class">
 		</form>
 	</div>

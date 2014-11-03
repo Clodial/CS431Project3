@@ -1,5 +1,6 @@
 <html>
 <head>
+<link href="../_inc/stylesheet.css" type="text/css" rel="stylesheet" />
 <?php
 	ob_start();
 	session_start();
@@ -23,6 +24,7 @@
 ?>
 </head>
 <body>
+<div id="back-update">
 <?php
 
 	$sql2 = "select * from EdParticipate where class='$class' and userTa='$user' and userSt='$student'";
@@ -31,13 +33,14 @@
 	if($c > 0){
 		$sql2 = "insert into EdGrades(userTeach,userStudent,class, Assignment, grade) values('$user','$student','$class','$assignment','$gr')";
 		if(mysql_query($sql2)){
-			echo "<h1>Student Graded!</h1></br>";
+			echo "<h1>Student Graded!</h1>";
 		}else{
 			echo mysql_error();
-			echo "<h1>Grading Failed!</h1></br>";
+			echo "<h1>Grading Failed!</h1>";
 		}
 	}
 	echo "<a href=\"P3Teacher.php\">Back To Teacher Controls</a>";
 ?>
+</div>
 </body>
 </html>

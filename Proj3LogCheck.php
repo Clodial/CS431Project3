@@ -1,5 +1,6 @@
 <html>
 <head>
+<link href="../_inc/stylesheet.css" type="text/css" rel="stylesheet" />
 <?php
 	ob_start();
 	session_start();

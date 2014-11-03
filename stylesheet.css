@@ -1,0 +1,239 @@
+/*****
+*
+*	CS431 Project 3 CSS Stylesheet
+*
+*****/
+
+@font-face{
+	font-family: CaviarReg;
+	src: url(../_font/CaviarDreams.ttf);
+}
+
+@font-face{
+	font-family: CaviarBold;
+	src: url(../font/CaviarDreams_Bold.ttf);
+}
+
+body{
+	margin:			0;
+	padding:		0;
+	font-family: 	CaviarReg,Helvetica, Arial, sans-serif;
+
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: CaviarBold, Helvetica, Arial, sans-serif;
+}
+h1{
+	font-size:	34px;
+}
+h2{
+	font-size:	30px;
+}
+h3{
+	font-size:	26px;
+}
+h4{
+	font-size:	22px;
+}
+h5{
+	font-size:	18px;
+}
+h6{
+	font-size:	14px;
+}
+a{
+	text-decoration: none;
+}
+
+/*Some base stuff*/
+.width-full{
+	width:		100%;
+	margin-top:	20px;
+	margin-bottom:	20px;
+}
+.width-half{
+	width:		40%;
+	margin-right:	50px;
+	margin-left:	50px;
+}	
+
+.clear{
+	clear:		both;
+}
+/*Front Page Stuff*/
+#fr-page-login{
+	padding:			50px;
+	margin:				100px auto;
+	width:				25%;
+	background-color:	#ffaa33;
+	color:				#fff;
+}
+#fr-page-login label{
+	margin-right:		40px;
+	line-height:		30px;
+
+}
+#fr-credits{
+	height:				100px;
+	width:				100%;
+	position:			relative;
+	background-color:	#ffaa33;
+	color:				#fff;
+}
+#fr-submit{
+	position:			relative;
+	top:				10px;
+}
+#fr-credits h3{
+	margin-left:		50px;
+	position:			relative;
+	top:				25px;
+	vertical-align:		middle;
+}
+#fr-credits p{
+	margin-left:		50px;
+	position:			relative;
+}
+#p3-CheckBoard{
+	padding:			50px;
+	margin:				100px auto;
+	width:				25%;
+	background-color:	#ffaa33;
+	color:				#fff;
+}
+.p3-checktest{
+	margin-right:		40px;
+}
+
+/*The main stuff*/
+#header{
+	height:				100px;
+	width:				100%;
+	background-color:	#ffaa33;
+	color:				#fff;
+}
+#header h1{
+	position:			relative;
+	margin-left:		50px;
+	top:				20px;
+	font-size:			50px;
+}
+
+/*Main parts*/
+#main-imp{
+	padding-top:		20px;
+	padding-bottom:		20px;
+	background-color:	#ff4433;
+	color:				#fff;
+}
+#main-imp h1{
+	margin-left:		50px;
+
+}
+#main-imp p{
+	margin-left:		50px;
+}
+#main-right-imp{
+	float:				right;
+}
+#main-right-imp h2{
+	margin-left:		20px;
+}
+#main-right-imp div{
+	width:				100%;
+	padding-top:		10px;
+	padding-bottom:		10px;
+	margin-bottom:		10px;
+	background-color:	#33ffaa;
+	color:				#fff;
+}
+#main-right-imp div p{
+	margin-left:	20px;
+}
+#main-left-imp{
+	float:				left;
+}
+#main-left-imp div{
+	width:				100%;
+	padding-top:		10px;
+	padding-bottom:		10px;
+	margin-bottom:		10px;
+	background-color:	#ff3388;
+	color:				#fff;
+}
+#main-left-imp h2{
+	margin-left:		20px;
+}
+#main-left-imp div p{
+	margin-left:	20px;
+}
+.form-blue{
+	background-color:	#3388ff;
+	color:				#fff;
+}
+#main-Add1{
+	padding-top:		20px;
+	padding-bottom:		20px;
+}
+#main-Add1 h2{
+	margin-left:		50px;
+}
+#main-Add1 form{
+	margin-left:		50px;
+	line-height:		30px;
+}
+#main-Add2{
+	padding-top:		20px;
+	padding-bottom:		20px;
+}
+#main-Add2 h2{
+	margin-left:		50px;
+}
+#main-Add2 form{
+	margin-left:		50px;
+	line-height:		30px;
+}
+#main-imp div{
+	width:				100%;
+	padding-top:		10px;
+	padding-bottom:		10px;
+	margin-bottom:		10px;
+	background-color:	#33ff44;
+}
+/**/
+
+#footer{
+	height:				50px;
+	width:				100%;
+	background-color:	#ffaa33;
+	color:				#fff;
+}
+#footer a{
+	position:			relative;
+	margin-left:		50px;
+	font-size:			20px;
+	color:				#fff;
+	top:				15px;
+}
+#footer a:hover{
+	color:				#3388ff;
+}
+
+#back-update{
+	margin-top:			200px;
+	background-color:	#ffaa33;
+	color:				#fff;
+	padding-top:		50px;
+	padding-bottom:		50px;
+}
+#back-update h1{
+	margin-left:		50px;
+}
+#back-update a{
+	margin-left:		50px;
+	color:				#fff;
+}
+#back-update a:hover{
+	color:				#000;
+}
+
